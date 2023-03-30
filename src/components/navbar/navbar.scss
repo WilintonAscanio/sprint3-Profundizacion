@@ -1,0 +1,38 @@
+ @use '../../var.scss' as v;
+ nav {
+    height: 60px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    & ul {
+        display: flex;
+        gap: 20px;
+    }
+}
+.info {
+
+    & small {
+        font-size: 18px;
+        font-weight: bold
+    }
+
+    img {
+        height: 40px;
+        
+
+    }
+}
+
+
+.navlink {
+    text-decoration: none;
+    color: v.$dark-color;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.active {
+    color: v.$main-color;
+}

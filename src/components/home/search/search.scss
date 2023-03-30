@@ -1,0 +1,79 @@
+@use '../../../var.scss' as v;
+
+.search {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 400px;
+    padding: 10px;
+
+    &__input {
+        display: flex;
+        height: 40px;
+        background-color: v.$complementary;
+        padding: 10px;
+        border-radius: 8px;
+
+        & img {
+            width: 5%;
+        }
+
+        & input {
+            padding-left: 10px;
+            width: 85%;
+            border: none;
+            background-color: v.$complementary;
+            height: 100%;
+            outline: none;
+        }
+
+        & button {
+            width: 10%;
+            border: none;
+        }
+    }
+    & div{
+        display: flex;
+        align-items: center;
+        height: 60px;
+
+        & figure{
+            display: flex;
+            gap: 10px;
+
+            & strong {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                color: v.$dark-color;
+                font-size: .9rem;
+
+                & span {
+                    font-size: .75rem;
+                    color: v.$gray-color;
+                }
+            }
+        }
+        & section {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 15px;
+            color: v.$gray-color;
+
+            & span {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                & img{
+                    width: 16px;
+                }
+            }
+
+        
+        }
+
+    }
+}

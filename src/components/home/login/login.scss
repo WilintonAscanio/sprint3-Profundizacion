@@ -1,0 +1,147 @@
+@use '../../../var.scss' as v;
+
+.login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: v.$main-color;
+
+    &__info{
+        background-color: v.$complementary;
+        height: 90%;
+        width: 380px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+
+        &__terms {
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & figure {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+
+                & img{
+                    height: 250px;
+                    width: 100%;
+                }
+            }
+        }
+        & section {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & button {
+                width: 100%;
+                background-color: v.$main-color;
+                height: 50px;
+                border-radius: 10px;
+                border: none;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
+.buttons{
+    height: 15px;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: v.$main-color;
+    text-decoration: none;
+    opacity: 0.3;
+  
+}
+.active{
+    width: 40px;
+    border-radius: 10px;
+    opacity: 1;
+}
+@media (max-width: 500px){
+    .login__info{
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+    }
+}
+.create{
+    background-color: v.$main-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        width: 375px;
+        height: 80%;
+        gap: 20px;
+        padding: 20px 10px;
+        border-radius: 8px;
+
+        & h3{
+            color: v.$dark-color;
+        }
+
+        & form{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+
+            & label{
+                display: flex;
+                flex-direction: column;
+                font-size: 10px;
+                color: v.$gray-color;
+                gap: 5px;
+         
+
+                & input {
+                    border: none;
+                    border-bottom: 1px solid v.$gray-color;
+                    padding-bottom: 5px;
+                    outline: none;
+                }
+            }
+            & button{
+                background-color: rebeccapurple;
+                height: 40px;
+                border-radius: 8px;
+                background-color: v.$main-color;
+                border: none;
+                cursor: pointer;
+                
+            }
+            & span{
+                color: red;
+                font-size: 10px;
+            }
+        }
+
+     
+    }
+}

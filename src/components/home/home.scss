@@ -1,0 +1,105 @@
+@use '../../var.scss' as v;
+
+.home {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__info {
+        padding: 20px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+
+        &__local {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            height: 40px;
+            cursor: pointer;
+
+            & small {
+                display: flex;
+                flex-direction: column;
+                color: v.$main-color;
+
+                & span {
+                    color: black;
+                }
+            }
+
+        }
+
+        & section {
+            display: flex;
+            gap: 10px;
+
+
+            & button {
+                background-color: v.$complementary;
+                height: 32px;
+                width: 106px;
+                cursor: pointer;
+                border: none;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+
+            }
+
+        }
+
+        & h5 {
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        &__dish {
+
+            &__main {
+                width: 160px;
+                height: 120px;
+                display: flex;
+                justify-content: start;
+                position: relative;
+                
+                & img{
+                    border-radius: 10px;
+                    clip-path: polygon(100% 0, 100% 14%, 65% 100%, 0 100%, 0 0);
+
+
+                }
+
+
+                
+            }
+            & div{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                & figure img{
+                    height: 18px;
+                }
+
+                & small {
+                    display: flex;
+                    gap: 5px;
+                    flex-direction: column;
+                }
+    
+            }
+
+          
+
+          
+        }
+    }
+}
+
+.actual {
+    background-color: v.$main-color !important;
+}
