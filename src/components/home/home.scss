@@ -58,6 +58,8 @@
         }
 
         &__dish {
+            cursor: pointer;
+
 
             &__main {
                 width: 160px;
@@ -67,6 +69,8 @@
                 position: relative;
                 
                 & img{
+                    width: 100%;
+                    object-fit: cover;
                     border-radius: 10px;
                     clip-path: polygon(100% 0, 100% 14%, 65% 100%, 0 100%, 0 0);
 

@@ -3,12 +3,14 @@ import './search.scss'
 import search from '../../../assets/search.svg'
 import pizza from '../../../assets/pizza.png'
 import recent from '../../../assets/recent.svg'
+import { useSelector } from 'react-redux'
 
 
 
 
 const Search = () => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
+  const { user } = useSelector(state => state.users)
 
   const inputValue = ({ value }) => {
     setValue(value)
@@ -29,10 +31,12 @@ const Search = () => {
             <strong>Meat Pizza <span>$29.00</span></strong>
           </figure> :
             <section>
-              <span><img src={recent} alt="recent" /> Pizza hawaiana</span>
-              <span> <img src={recent} alt="recent" />Pizza doble queso</span>
-              <span> <img src={recent} alt="recent" />Hamburguesa</span>
-
+              {user?.name ? user.recentsSearch.map(
+                (search, index) => 
+              <span key={index}><img src={recent} alt="recent" />{search.name}</span> 
+                
+              ) : <></>}
+            
             </section>
       }
 

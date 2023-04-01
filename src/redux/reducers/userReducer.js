@@ -7,10 +7,12 @@ const initialState = {
     photo: "",
     birthday: "",
     phone: "",
+    location: "",
     orders: [],
     payments: [],
     recentsSearch: [],
-    type: ''
+    type: "",
+    uid: "",
   },
   error: {
     status: undefined,
@@ -25,12 +27,21 @@ export const userReducer = (state = initialState, action) => {
     case userTypes.LOGIN_USER:
       return {
         ...state,
-        user : action.payload.user,
-        error : action.payload.error,
-        isLogged : true,
-
+        user: action.payload.user,
+        error: action.payload.error,
+        isLogged: true,
       };
 
+    case userTypes.UPDATE_LOCATION:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          location: action.payload,
+        },
+      };
+    case userTypes.LOGOUT:
+      return state;
 
     default:
       return state;

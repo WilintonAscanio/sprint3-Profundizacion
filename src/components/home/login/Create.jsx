@@ -1,31 +1,67 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createUserAsync } from '../../../redux/actions/userActions';
+import { createUserAsync, updateProfileAsync } from '../../../redux/actions/userActions';
+import Creating from '../../loaders/Creating';
+import { fileUpLoad } from '../../../services/fileUpLoad';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../../firebase/firebaseConfig';
 
 const Create = () => {
+    const [isEdit, setIsEdit] = useState(false)
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
-
     const dispatch = useDispatch()
-    const { user, error } = useSelector((store) => store.users)
+    const { loading, error } = useSelector((store) => store.users)
+
+
+
+
+
+
+    const onSubmit = async (data) => {
+        console.log(data);
+        const photo = data.photo[0] ? await fileUpLoad(data.photo[0]) : '';
+
+        const user = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            photo: photo,
+            location: data.location,
+            birthday: data.birthday
+
+        }
+        if (isEdit) {
+            dispatch(updateProfileAsync(user))
+            setTimeout(() => {
+                navigate('/')
+
+            }, 2000);
+        } else {
+            dispatch(createUserAsync({...user, phone : data.phone}))
+            setTimeout(() => {
+                navigate('/')
+
+            }, 2000);
+
+        }
+
+
+
+    }
 
     useEffect(() => {
+        onAuthStateChanged(auth, (user => {
+            if (user) {
+                setIsEdit(true)
 
-        console.log(user);
-        console.log(error);
+            }
+        }))
 
-    }, [user])
+    }, [])
 
-
-
-
-    const onSubmit = (data) => {
-        console.log(data);
-        navigate('/')
-        // dispatch(createUserAsync(data))
-    }
 
     return (
         <article className='create'>
@@ -63,10 +99,23 @@ const Create = () => {
                         })} />
                     </label>
                     {errors.phone ? <span>{errors.phone.message}</span> : <></>}
-                    
+                    <label >LOCATION
+                        <input type="text" placeholder='Type your location' {...register('location', {
+                            required: 'This field is required'
+                        })} />
+                    </label>
+                    {errors.location ? <span>{errors.location.message}</span> : <></>}
+                    <label >Photo
+                        <input type="file"  {...register('photo', {
+                            required: 'This field is required'
+                        })} />
+                    </label>
+                    {errors.photo ? <span>{errors.photo.message}</span> : <></>}
+
 
 
                     <button>Sign In</button>
+                    {loading ? <Creating /> : <></>}
                 </form>
 
             </div>
