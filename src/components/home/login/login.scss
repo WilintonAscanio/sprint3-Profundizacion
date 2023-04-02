@@ -157,14 +157,25 @@
 .signWithEmail {
     &__info {
         height: 50%;
+
         form {
-            justify-content: space-around;
+            justify-content: space-evenly;
             gap: 20px;
+
+            & label,
+            input {
+                font-size: 16px;
+            }
+
 
             & button {
                 margin-top: 5%;
-                
 
+
+            }
+
+            & span {
+                font-size: 14px;
             }
         }
 

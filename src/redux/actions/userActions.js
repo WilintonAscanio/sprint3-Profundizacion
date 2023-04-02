@@ -46,8 +46,9 @@ const createUser = (user) => {
 };
 export const createUserAsync = (user) => {
   return async (dispatch) => {
+    dispatch(toggle_loading());
+
     try {
-      dispatch(toggle_loading());
       const verificate = await createUserWithEmailAndPassword(
         auth,
         user.email,
@@ -181,6 +182,33 @@ export const logOutAsync = () => {
       dispatch(logOut());
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+export const loginWithEmail = (user) => {
+  console.log(user);
+
+  return async (dispatch) => {
+    dispatch(toggle_loading());
+
+    try {
+      const email = user.email;
+      const password = user.password;
+      const userAuth = await signInWithEmailAndPassword(auth, email, password);
+      const userCollection = await getUsers(userAuth.user.uid);
+      console.log(userCollection);
+      dispatch(
+        loginUser(
+          {
+            ...userCollection,
+          },
+          { status: false, message: "" }
+        )
+      );
+      dispatch(toggle_loading());
+    } catch (error) {
+      console.log(error);
+      dispatch(loginUser({}, { status: true, message: error.message }));
     }
   };
 };

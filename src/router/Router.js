@@ -27,31 +27,24 @@ import { loginUser } from "../redux/actions/userActions";
 import SignWithEmail from "../components/home/login/SignWithEmail";
 
 const Router = () => {
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user => {
-
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUsers(user.uid).then((response) => {
-          dispatch(loginUser(response, {status : false, message : ''}))
-          
-        }).catch((error) => {
-          dispatch(loginUser({}, {status : true, message : error.message}))
-          
-        })
-        
-      
+        getUsers(user.uid)
+          .then((response) => {
+            dispatch(loginUser(response, { status: false, message: "" }));
+          })
+          .catch((error) => {
+            dispatch(loginUser({}, { status: true, message: error.message }));
+          });
+      } else {
+        console.log("No logged");
       }
-      else{
-        console.log('No logged');
-      }
+    });
+  }, []);
 
-    }))
-   
-
-  }, [])
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -61,7 +54,6 @@ const Router = () => {
         <Route path="loginEmail" element={<SignWithEmail />} />
         <Route path="signIn" element={<SignIn />} />
         <Route path="signIn/verification" element={<Verification />} />
-    
 
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Navbar />}>

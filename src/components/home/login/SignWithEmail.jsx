@@ -1,30 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { loginUserAsync } from '../../../redux/actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginWithEmail } from '../../../redux/actions/userActions'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import Creating from '../../loaders/Creating'
+import { toggle_loading } from '../../../redux/actions/loadingAction'
 
 const SignWithEmail = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const dispatch = useDispatch();
     const navigate = useNavigate()
-
-    const onSubmit = ({email, password}) => {
-        dispatch(loginUserAsync(email, password)).then((response) => {
-            if (response) {
-                console.log(response);
-                console.log('siii');
-                navigate('/')
+    const { user } = useSelector(state => state.users)
+    const loading = useSelector((store) => store.loading)
 
 
-            }
-        }).catch((error) => {
-            console.log(error);
-
-        })
-
+    const onSubmit = (data) => {
+        dispatch(loginWithEmail(data))
 
     }
+    useEffect(() => {
+        if (user?.uid) {
+
+            setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Bienvenido',
+                    text: `Que bueno verte ${user.name}`
+                })
+                navigate('/')
+
+            }, 2000);
+
+        }
+
+
+    }, [user])
+
     return (
         <article className='signWithEmail'>
             <div className='signWithEmail__info'>
@@ -46,8 +58,11 @@ const SignWithEmail = () => {
                     <button type='submit'>Login</button>
 
                 </form>
+                {loading ? <Creating /> : <></>}
+
 
             </div>
+
 
 
         </article>

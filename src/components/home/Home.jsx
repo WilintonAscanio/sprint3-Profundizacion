@@ -19,12 +19,15 @@ const Home = () => {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.users)
   const { restaurants } = useSelector(state => state.restaurants)
-  console.log(restaurants[0]);
+  const { loading } = useSelector((state) => state.loading)
+    console.log(loading);
 
   useEffect(() => {
     dispatch(getRestaurantsAsync())
     
   }, [])
+
+  
   
   return (
     <article className='home'>

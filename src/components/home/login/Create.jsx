@@ -13,7 +13,7 @@ const Create = () => {
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const dispatch = useDispatch()
-    const { loading, error } = useSelector((store) => store.users)
+    const  loading  = useSelector((store) => store.loading)
 
 
 

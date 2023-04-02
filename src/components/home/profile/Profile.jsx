@@ -7,7 +7,6 @@ import payment from '../../../assets/payment.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import { logOutAsync } from '../../../redux/actions/userActions'
-import { toggle_loading } from '../../../redux/actions/loadingAction'
 
 
 
@@ -28,7 +27,7 @@ const Profile = () => {
     }).then((response) => {
       if (response.isConfirmed) {
         dispatch(logOutAsync())
-        dispatch(toggle_loading())
+        // dispatch(toggle_loading())
         navigate('/signIn')
 
       }
