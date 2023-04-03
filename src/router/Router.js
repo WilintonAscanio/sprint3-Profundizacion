@@ -61,14 +61,14 @@ const Router = () => {
         <Route path="/" element={<Navbar />}>
           <Route path="adress" element={<Adress />} />
           <Route path="allOrder" element={<AllOrder />} />
-          <Route path="allOrder/order" element={<Order />} />
+          <Route path="allOrder/:order" element={<Order />} />
           <Route path="profile" element={<Profile />} />
           <Route path="profile/payment" element={<Payment />} />
           <Route path="profile/edit" element={<EditUser />} />
           <Route path="/profile/payment/card" element={<CardUser />} />
           <Route path="search" element={<Search />} />
         </Route>
-        <Route path="restaurants" element={<Restaurants />} />
+        <Route path="/:restaurant" element={<Restaurants />} />
 
         <Route path="dish" element={<Dish />} />
         <Route path="newOrder" element={<NewOrder />} />

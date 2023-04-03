@@ -92,7 +92,7 @@
                 align-items: center;
                 gap: 5px;
                 font-size: 15px;
-                color: green;
+                
 
                 & img{
                     width: 10px;
@@ -100,4 +100,10 @@
             }
         }
     }
+}
+.delivered {
+    color: green;
+}
+.cooking{
+    color: orange;
 }

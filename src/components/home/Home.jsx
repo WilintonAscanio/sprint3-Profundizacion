@@ -40,7 +40,7 @@ const Home = () => {
     )
     setData(filtered)
     if (!type) {
-      setData(restaurants[0])
+      setData(restaurants[0].slice(0 , 10))
       setButton('')
       setButton2('')
       setAll('clicked')
@@ -100,8 +100,8 @@ const Home = () => {
         <div className='home__info__dishes'>
 
           {data.length ?
-            data.map((res, index) =>
-              <section className='home__info__dish' key={index}>
+            data.slice(0, 5).map((res, index) =>
+              <section className='home__info__dish' key={index} onClick={() => navigate(`${res.name}`) }>
                 <figure className='home__info__dish__main'>
                   <img src={res.img} alt="dish" />
                 </figure>
@@ -122,8 +122,8 @@ const Home = () => {
             )
             :
 
-            restaurants[0]?.map((res, index) =>
-              <section className='home__info__dish' key={index}>
+            restaurants[0]?.slice(0,10).map((res, index) =>
+              <section className='home__info__dish' key={index} onClick={() => navigate(`${res.name}`) }>
                 <figure className='home__info__dish__main'>
                   <img src={res.img} alt="dish" />
                 </figure>

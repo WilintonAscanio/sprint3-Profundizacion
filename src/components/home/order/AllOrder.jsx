@@ -7,22 +7,22 @@ import { useSelector } from 'react-redux'
 const AllOrder = () => {
     const navigate = useNavigate()
     const { user } = useSelector(state => state.users)
-    console.log(user.orders);
+    
 
     return (
         <article className='allOrders'>
             <small>All orders</small>
             <div>
-                {user?.name &&
+                {user.orders.length ?
                     user.orders.map((order, index) =>
                 <section key={index}>
                     <figure>
                         <img src={hat} alt="hat" />
-                        <small>{order.restaurantName}<span>${order.total}.00</span></small>
+                        <small>{order.restaurantName}<span>${order.total +5.49 +8}</span></small>
                     </figure>
-                    <strong onClick={() => navigate('order')}>{order.status} <img src={next} alt="next" /></strong>
+                    <strong onClick={() => navigate(`${order.id}`)} className={order.status === 'Delivered' ? 'delivered' : 'cooking' }>{order.status} <img src={next} alt="next" /></strong>
                 </section>
-                )}
+                ): <><h1>Aun no tienes ordenes</h1></>}
 
                 {/* <section>
                     <figure>
