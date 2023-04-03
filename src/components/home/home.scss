@@ -37,7 +37,7 @@
 
 
             & button {
-                background-color: v.$complementary;
+                
                 height: 32px;
                 width: 106px;
                 cursor: pointer;
@@ -47,6 +47,10 @@
                 align-items: center;
                 justify-content: center;
                 gap: 5px;
+
+                &:hover{
+                    background-color: v.$main-color;
+                }
 
             }
 
@@ -59,6 +63,7 @@
 
         &__dish {
             cursor: pointer;
+            
 
 
             &__main {
@@ -67,8 +72,8 @@
                 display: flex;
                 justify-content: start;
                 position: relative;
-                
-                & img{
+
+                & img {
                     width: 100%;
                     object-fit: cover;
                     border-radius: 10px;
@@ -78,14 +83,33 @@
                 }
 
 
-                
+
             }
-            & div{
+
+            &:hover{
+                scale: 1.1;
+                transition: scale .2s;
+            }
+
+
+
+
+
+        }
+
+        &__dishes {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+
+            & div {
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
 
-                & figure img{
+                & figure img {
                     height: 18px;
                 }
 
@@ -94,16 +118,28 @@
                     gap: 5px;
                     flex-direction: column;
                 }
-    
+
             }
-
-          
-
-          
         }
     }
 }
 
-.actual {
+
+.clicked{
     background-color: v.$main-color !important;
+}
+
+.carousel-imgs {
+    height: 120px;
+    gap: 10px;
+    width: 100%;
+    
+
+        & img {
+            height: 80px;
+            width: 40px;
+            object-fit: cover;
+            
+        }
+    
 }

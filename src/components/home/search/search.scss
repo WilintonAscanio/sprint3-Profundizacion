@@ -4,12 +4,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 400px;
+    width: 100%;
     padding: 10px;
+   align-items: center;
 
     &__input {
         display: flex;
         height: 40px;
+        width: 420px;
         background-color: v.$complementary;
         padding: 10px;
         border-radius: 8px;
@@ -35,7 +37,8 @@
     & div{
         display: flex;
         align-items: center;
-        height: 60px;
+        width: 410px;
+        margin-top: 10px;
 
         & figure{
             display: flex;
@@ -55,9 +58,9 @@
             }
         }
         & section {
-            margin-top: 60px;
             display: flex;
             flex-direction: column;
+            width: 100%;
             gap: 10px;
             font-size: 15px;
             color: v.$gray-color;

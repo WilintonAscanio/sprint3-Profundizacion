@@ -212,3 +212,17 @@ export const loginWithEmail = (user) => {
     }
   };
 };
+
+export const editUserAsync = (user) => {
+  return async (dispatch) => {
+    dispatch(toggle_loading());
+
+    try {
+      const userAuth = auth.currentUser;
+
+      await updateProfile();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

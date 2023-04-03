@@ -55,6 +55,8 @@ const Router = () => {
         <Route path="signIn" element={<SignIn />} />
         <Route path="signIn/verification" element={<Verification />} />
 
+        
+
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Navbar />}>
           <Route path="adress" element={<Adress />} />

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-const PrivateRotuer = ({logged}) => {
+const PrivateRouter = ({logged}) => {
   return (
     <div>{logged ? <>
     <Outlet />
-    </> : <Navigate to='/login' />}</div>
+    </> : <Navigate to='/signIn' />}</div>
   )
 }
 
-export default PrivateRotuer
+export default PrivateRouter

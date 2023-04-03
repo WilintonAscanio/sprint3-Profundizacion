@@ -1,36 +1,42 @@
-.loader {
-  width: 40px;
-  position: relative;
-  border: 24px solid #FFE031;
-  border-radius: 50%;
-  box-sizing: border-box;
-  animation: eat 1s linear infinite;
-}
-.loader::after , .loader::before {
-  content: '';
+.loading {
+  background-color: rgba(255, 0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  display: flex;
   position: absolute;
-  left: 50px;
+  left: 45%;
   top: 50%;
-  transform: translateY(-50%);
-  background: #414141;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  opacity: 0;
-  animation: move 2s linear infinite;
+
 }
 
-.loader::before {
-  animation-delay: 1s;
+.loading div {
+  background-color: rgb(255, 217, 0);
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  border-radius: 50px;
+  animation-name: load912355;
+  animation-duration: .9s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  text-align: center;
+  justify-content: center;
 }
 
-@keyframes eat {
-  0% , 49% { border-right-color: #FFE031 }
-  50% , 100% { border-right-color: #0000 }
+.loading .a {
+  animation-delay: .3s;
 }
-@keyframes move {
-  0% { left: 75px ; opacity: 1}
-  50% { left: 0px; opacity: 1 }
-  52%, 100% { left: -5px; opacity: 0; }
+
+.loading .u {
+  animation-delay: .6s;
+}
+
+@keyframes load912355 {
+  0% {
+    transform: translateY(50px) scale(1);
+  }
+
+  100% {
+    transform: translateY(10px) scale(1.8) rotate(360deg);
+  }
 }

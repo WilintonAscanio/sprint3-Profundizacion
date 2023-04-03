@@ -4,7 +4,11 @@ import './creating.scss'
 const Creating = () => {
   return (
     
-<span class="loader"></span>
+<div class="loading">
+    <div class="i"></div>
+    <div class="a"></div>
+    <div class="u"></div>
+</div>
   )
 }
 
