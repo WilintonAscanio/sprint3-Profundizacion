@@ -98,6 +98,7 @@
         }
 
         &__dishes {
+            
             margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
@@ -108,6 +109,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
+                width: 200px;
+                
 
                 & figure img {
                     height: 18px;
@@ -142,4 +145,16 @@
             
         }
     
+}
+@media(max-width : 590px) {
+    .home {
+
+        &__info {
+            padding: 10px;
+
+            &__dish {
+                width: 100%;
+            }
+        }
+    }
 }

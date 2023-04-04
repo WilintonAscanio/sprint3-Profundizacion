@@ -70,7 +70,7 @@ const Router = () => {
         </Route>
         <Route path="/:restaurant" element={<Restaurants />} />
 
-        <Route path="dish" element={<Dish />} />
+        <Route path="/:restaurant/:dish" element={<Dish />} />
         <Route path="newOrder" element={<NewOrder />} />
         <Route path="currentOrder" element={<CurrentOrder />} />
         <Route path="create" element={<Create />} />

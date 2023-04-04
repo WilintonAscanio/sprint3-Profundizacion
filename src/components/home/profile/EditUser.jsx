@@ -19,7 +19,7 @@ const EditUser = () => {
         <img src={back} alt="back" />
         <small>Profile</small>
       </Link>
-      {user?.name ? <>
+      {user?.name ? <section>
         <figure>
           <img src={user.photo} alt="profile" />
           <span className="material-symbols-outlined">
@@ -47,7 +47,7 @@ const EditUser = () => {
           </section>
 
         </div>
-      </> : <></>}
+      </section> : <></>}
 
       <button>Save</button>
     </article>

@@ -22,7 +22,6 @@ const Home = () => {
   const { user } = useSelector(state => state.users)
   const { restaurants } = useSelector(state => state.restaurants)
   const { loading } = useSelector((state) => state.loading)
-  console.log(loading);
   const [data, setData] = useState([])
   const [button, setButton] = useState('')
   const [button2, setButton2] = useState('')
@@ -40,7 +39,7 @@ const Home = () => {
     )
     setData(filtered)
     if (!type) {
-      setData(restaurants[0].slice(0 , 10))
+      // setData(restaurants[0].slice(0 , 10))
       setButton('')
       setButton2('')
       setAll('clicked')
@@ -100,7 +99,7 @@ const Home = () => {
         <div className='home__info__dishes'>
 
           {data.length ?
-            data.slice(0, 5).map((res, index) =>
+            data.map((res, index) =>
               <section className='home__info__dish' key={index} onClick={() => navigate(`${res.name}`) }>
                 <figure className='home__info__dish__main'>
                   <img src={res.img} alt="dish" />
@@ -122,7 +121,7 @@ const Home = () => {
             )
             :
 
-            restaurants[0]?.slice(0,10).map((res, index) =>
+            restaurants[0]?.map((res, index) =>
               <section className='home__info__dish' key={index} onClick={() => navigate(`${res.name}`) }>
                 <figure className='home__info__dish__main'>
                   <img src={res.img} alt="dish" />

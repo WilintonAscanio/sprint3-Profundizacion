@@ -27,6 +27,8 @@ const Order = () => {
   return (
 
     <article className='order'>
+      <div className='order__info'>
+
       {data?.id ? <>
         <Link className='adress__main__back' to={'/allOrder'}>
           <img src={back} alt="back" />
@@ -50,6 +52,8 @@ const Order = () => {
           <strong>Cost of delivery <span>$8.00</span></strong>
         </div>
         <strong>Total <span>${total}</span></strong></> : <></>}
+      </div>
+
 
     </article>
   )

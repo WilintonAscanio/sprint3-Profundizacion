@@ -87,6 +87,7 @@
         padding: 20px;
         justify-content: space-between;
         flex-wrap: wrap;
+        width: 100%;
 
 
         & figure {
@@ -94,9 +95,13 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 40%;
+            height: 150px;
 
             & img {
                 border-radius: 8px;
+                height: 100px;
+                object-fit: cover;
             }
 
             & figcaption {
@@ -112,115 +117,144 @@
 .dish {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 400px;
-    height: 100vh;
-    background-color: #fffefa;
+    width: 100%;
+    height: 100%;
 
     &__info {
         display: flex;
-        flex-direction: column;
         gap: 10px;
-
-        & figure img {
-            width: 100%;
-        }
-
-        & h3 {
-            color: v.$dark-color;
-            display: flex;
-            justify-content: space-between;
-            font-size: 17px;
-            align-items: center;
-            padding-inline: 10px;
+        padding: 20px;
+        width: 100%;
+        height: 100vh;
 
 
-            & span {
-                font-size: 12px;
-                color: v.$gray-color;
-                display: flex;
-                align-items: center;
-                gap: 5px;
+        & figure {
+            width: 50%;
+            height: 100%;
+            border-radius: 8px;
+            padding: 40px;
+
+
+            & img {
+                object-fit: cover;
+                border-radius: 8px;
+                height: 100%;
+                width: 100%;
+
             }
 
         }
 
-        & p {
-            padding-inline: 10px;
-            font-size: 12px;
-            color: v.$gray-color;
-        }
-
-        & h5 {
-            color: v.$gray-color;
-            font-size: 15px;
-            padding: 10px;
-
-        }
-
-        & label {
-            padding-inline: 10px;
+        & section {
             display: flex;
-            width: 100%;
+            flex-direction: column;
             gap: 10px;
-            align-items: center;
-            cursor: pointer;
+            width: 50%;
+            padding: 40px;
 
-
-            & small {
-                width: 100%;
+            & h3 {
+                color: v.$dark-color;
                 display: flex;
                 justify-content: space-between;
-                font-size: 13px;
+                font-size: 20px;
+                align-items: center;
+                padding-inline: 10px;
+
+
+                & span {
+                    font-size: 14px;
+                    color: v.$gray-color;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
             }
 
-            & input {
-                appearance: none;
-                height: 15px;
-                width: 15px;
-                border-radius: 4px;
-                background-color: #f2f2f2;
+            & p {
+                padding-inline: 10px;
+                font-size: 14px;
+                color: v.$gray-color;
+            }
+
+            & h5 {
+                color: v.$gray-color;
+                font-size: 18px;
+                padding: 10px;
+
+            }
+
+            & label {
+                padding-inline: 10px;
+                display: flex;
+                width: 100%;
+                gap: 10px;
+                align-items: center;
                 cursor: pointer;
 
 
-                &:checked {
-                    background-color: v.$main-color;
-                    background-image: url(../../assets/check.svg);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: 10px;
+                & small {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 16px;
+                }
+
+                & input {
+                    appearance: none;
+                    height: 15px;
+                    width: 15px;
+                    border-radius: 4px;
+                    background-color: #f2f2f2;
+                    cursor: pointer;
 
 
+                    &:checked {
+                        background-color: v.$main-color;
+                        background-image: url(../../assets/check.svg);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: 10px;
+
+
+
+                    }
+
+                    &:checked~small span {
+                        color: v.$main-color;
+                    }
 
                 }
 
-                &:checked~small span {
-                    color: v.$main-color;
-                }
 
             }
-
-
         }
+
+
     }
 
     &__btns {
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
         display: flex;
         height: 40px;
-        justify-content: space-between;
+        justify-content: end;
         padding-inline: 10px;
         margin-bottom: 10px;
+        gap: 100px;
 
         & section {
             display: flex;
             align-items: center;
             height: 40px;
             background-color: #f2f2f2;
-            width: 120px;
+            width: 140px;
             justify-content: space-between;
             border-radius: 8px;
 
             & button {
+                background-color: rebeccapurple;
                 height: 100%;
                 width: 33%;
                 background-color: transparent;
@@ -476,13 +510,14 @@
                 width: 80px;
                 align-self: center;
             }
-            & section{
+
+            & section {
                 display: flex;
                 gap: 10px;
                 justify-content: space-around;
                 font-size: 12px;
 
-                & label{
+                & label {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -495,8 +530,8 @@
                         border-radius: 50%;
                         background-color: v.$gray-color;
                         cursor: pointer;
-        
-        
+
+
                         &:checked {
                             background-color: v.$main-color;
                             background-image: url(../../assets/doneW.svg);
@@ -504,20 +539,21 @@
                             background-repeat: no-repeat;
                             background-size: 10px;
                             color: white;
-        
-        
-        
+
+
+
                         }
-        
-                       
-        
+
+
+
                     }
                 }
             }
 
 
         }
-        &__products{
+
+        &__products {
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -541,18 +577,19 @@
                     gap: 10px;
                     font-size: 14px;
 
-                    & small, span {
+                    & small,
+                    span {
                         color: v.$gray-color;
                     }
 
-                    & strong{
+                    & strong {
                         display: flex;
                         align-items: center;
                         width: 100%;
                         justify-content: space-between;
                         color: v.$dark-color;
 
-                     
+
                     }
 
                 }
@@ -560,5 +597,36 @@
 
             }
         }
+    }
+}
+@media(max-width: 1000px){
+    .dish {
+
+        &__btns {
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
+@media(max-width: 730px){
+    .dish {
+        &__info{
+            flex-direction: column;
+            padding: 0;
+
+            & figure {
+                width: 100%;
+                padding: 0;
+                height: 40%;
+            }
+            & section {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+        &__btns{
+            position: relative;
+        }
+
     }
 }
