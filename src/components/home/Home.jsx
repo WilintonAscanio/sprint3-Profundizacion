@@ -90,7 +90,7 @@ const Home = () => {
 
         </section>
         <h5>Restaurants and cafes</h5>
-        <section>
+        <section className='btns'>
           <button className={all} onClick={() => arrayFilter()}>All</button>
           <button onClick={() => arrayFilter(1)} className={button}><img src={hamburguer} alt="hamburguer" /> Fast food</button>
           <button onClick={() => arrayFilter(2)} className={button2}><img src={pizza} alt="pizza" /> Pizza</button>

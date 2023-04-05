@@ -6,7 +6,9 @@ export const userTypes = {
     LOGOUT: 'LOGOUT',
     ADD_SEARCH : 'ADD_SEARCH',
     CREATE_ORDER : 'CREATE_ORDER',
-    ADD_CARD: 'ADD_CARD'
+    ADD_CARD: 'ADD_CARD',
+    ADD_ORDER : 'ADD_ORDER',
+    RESET_ORDER : 'RESET_ORDER'
 
 }
 

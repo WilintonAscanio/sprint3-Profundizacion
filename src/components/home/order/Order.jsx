@@ -15,7 +15,7 @@ const Order = () => {
 
   useEffect(() => {
 
-    const orderFiltered = user?.orders.filter(ord => ord.id === order)
+    const orderFiltered = user?.orders.filter(ord => ord.restaurantNAme === order)
     setData(orderFiltered[0])
     setTotal(orderFiltered[0]?.total + 5.49 + 8)
 
@@ -29,7 +29,7 @@ const Order = () => {
     <article className='order'>
       <div className='order__info'>
 
-      {data?.id ? <>
+      {data?.Date ? <>
         <Link className='adress__main__back' to={'/allOrder'}>
           <img src={back} alt="back" />
           <small>{data.Date}</small>

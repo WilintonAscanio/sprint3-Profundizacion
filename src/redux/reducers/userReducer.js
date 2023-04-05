@@ -13,6 +13,7 @@ const initialState = {
     recentsSearch: [],
     type: "",
     uid: "",
+    currentOrder : [],
   },
   error: {
     status: undefined,
@@ -53,7 +54,7 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          orders: action.payload,
+          currentOrder: action.payload,
         },
       };
     case userTypes.ADD_CARD:
@@ -64,6 +65,14 @@ export const userReducer = (state = initialState, action) => {
           payments: action.payload,
         },
       };
+    case userTypes.ADD_ORDER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          orders: action.payload,
+        },
+      };
 
       case userTypes.EDIT_USER:
         return {
@@ -72,6 +81,10 @@ export const userReducer = (state = initialState, action) => {
             ...state.user,
             
           }
+        }
+      case userTypes.RESET_ORDER:
+        return {
+         ...initialState
         }
     case userTypes.LOGOUT:
       return state;

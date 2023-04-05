@@ -18,11 +18,12 @@ const AllOrder = () => {
                 <section key={index}>
                     <figure>
                         <img src={hat} alt="hat" />
-                        <small>{order.restaurantName}<span>${order.total +5.49 +8}</span></small>
+                        <small>{order.restaurantNAme}<span>${order.total +5.49 +8}</span></small>
                     </figure>
-                    <strong onClick={() => navigate(`${order.id}`)} className={order.status === 'Delivered' ? 'delivered' : 'cooking' }>{order.status} <img src={next} alt="next" /></strong>
+                    <strong onClick={() => navigate(`${order.restaurantNAme}`)} className={order.status === 'Delivered' ? 'delivered' : 'cooking' }>{order.status} <img src={next} alt="next" /></strong>
                 </section>
                 ): <><h1>You still don't have orders 😢</h1></>}
+                <h4 onClick={() => navigate('/currentOrder')}>Current Order <img src={next} /></h4>
 
                 {/* <section>
                     <figure>

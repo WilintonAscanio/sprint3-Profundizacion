@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { updateLocationAsync } from '../../redux/actions/userActions'
 import { color } from '@cloudinary/url-gen/qualifiers/background'
+import { ToastContainer, toast } from 'react-toastify'
 
 //Hacer el use selector de loading y luego pasarselo en el button como disabled asi disabled={loading}
 const Adress = () => {
@@ -18,10 +19,25 @@ const Adress = () => {
 
   const dispatch = useDispatch()
   const onSubmit = (data) => {
-    console.log(data);
-    dispatch(updateLocationAsync(data.location))
-    reset()
-    
+    if (data) {
+      dispatch(updateLocationAsync(data.location))
+      reset()
+      toast('✔ Location was updated!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+  
+
+
+    }
+
+
 
 
   }
@@ -35,7 +51,7 @@ const Adress = () => {
         </Link>
         <section onSubmit={handleSubmit(onSubmit)}>
           <img src={location} alt="location" />
-          <small style={{fontWeight:'bold', color: 'black'}}>{user?.name ? user.location : <></> }</small>
+          <small style={{ fontWeight: 'bold', color: 'black' }}>{user?.name ? user.location : <></>}</small>
           <button>🗑</button>
         </section>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,13 +62,14 @@ const Adress = () => {
             })} />
           </label>
           {errors.location ? <span>{errors.location.message}</span> : <></>}
-          <button style={{color:'gray', width:'95px'}}>Save</button>
+          <button style={{ color: 'gray', width: '95px' }}>Save</button>
         </form>
 
 
       </div>
 
       <button>Specify on the map</button>
+      <ToastContainer />
 
 
     </article>

@@ -64,6 +64,7 @@ export const createUserAsync = (user) => {
         payments: [],
         recentsSearch: [],
         type: "user",
+        currentOrder: [],
       };
       const userDoc = await addDoc(usersCollection, newUser);
 
@@ -121,22 +122,19 @@ export const addSearchAsync = (recentsSearch) => {
       const userDoc = await getDocs(q);
       userDoc.forEach((user) => {
         id = user.id;
-        array = user.data().recentsSearch
+        array = user.data().recentsSearch;
       });
 
-      let newData = [...array, recentsSearch]
+      let newData = [...array, recentsSearch];
       const userRef = doc(dataBase, collectionName, id);
-      await updateDoc(userRef, {recentsSearch : newData});
+      await updateDoc(userRef, { recentsSearch: newData });
       dispatch(addSearch(newData));
-      
     } catch (error) {
       console.log(error);
-      dispatch(addSearch(array))
+      dispatch(addSearch(array));
     }
-    
-  }
-  
-}
+  };
+};
 const addPayment = (data) => {
   return {
     type: userTypes.ADD_CARD,
@@ -154,22 +152,78 @@ export const addPaymentAsync = (payment) => {
       const userDoc = await getDocs(q);
       userDoc.forEach((user) => {
         id = user.id;
-        array = user.data().payments
+        array = user.data().payments;
       });
 
-      let payments = [...array, payment]
+      let payments = [...array, payment];
       const userRef = doc(dataBase, collectionName, id);
-      await updateDoc(userRef, {payments : payments});
+      await updateDoc(userRef, { payments: payments });
       dispatch(addPayment(payments));
-      
     } catch (error) {
       console.log(error);
-      dispatch(addPayment(array))
+      dispatch(addPayment(array));
     }
-    
-  }
-  
-}
+  };
+};
+const addOrder = (data) => {
+  return {
+    type: userTypes.ADD_ORDER,
+    payload: data,
+  };
+};
+export const resetOrder = () => {
+  return {
+    type: userTypes.RESET_ORDER,
+  };
+};
+export const resetOrderAsync = () => {
+  return async (dispatch) => {
+    const currentUser = auth.currentUser;
+    let id;
+    let array = [];
+
+    try {
+      const q = query(usersCollection, where("uid", "==", currentUser.uid));
+      const userDoc = await getDocs(q);
+      userDoc.forEach((user) => {
+        id = user.id;
+        array = user.data().currentOrder;
+      });
+
+      let current= [];
+      const userRef = doc(dataBase, collectionName, id);
+      await updateDoc(userRef, { currentOrder: current });
+      dispatch(resetOrder(current));
+    } catch (error) {
+      console.log(error);
+      dispatch(resetOrder(array));
+    }
+  };
+};
+export const addOrderAsync = (order) => {
+  return async (dispatch) => {
+    const currentUser = auth.currentUser;
+    let id;
+    let array = [];
+
+    try {
+      const q = query(usersCollection, where("uid", "==", currentUser.uid));
+      const userDoc = await getDocs(q);
+      userDoc.forEach((user) => {
+        id = user.id;
+        array = user.data().orders;
+      });
+
+      let orders = [...array, order];
+      const userRef = doc(dataBase, collectionName, id);
+      await updateDoc(userRef, { orders: orders });
+      dispatch(addOrder(orders));
+    } catch (error) {
+      console.log(error);
+      dispatch(addOrder(array));
+    }
+  };
+};
 const createOrder = (data) => {
   return {
     type: userTypes.CREATE_ORDER,
@@ -187,33 +241,45 @@ export const createOrderAsync = (order) => {
       const userDoc = await getDocs(q);
       userDoc.forEach((user) => {
         id = user.id;
-        array = user.data().orders
+        array = user.data().currentOrder;
       });
-      const newOrder = {
-        Date : "26.11.22",
-        dishes: [{
-          Price: order.price,
-          Quantity : order.quantity,
-          name : order.name
-        }],
-        restaurantNAme : order.resName,
-        status : "Delivered",
-        total : order.total
-      }
 
-      array = [...array, newOrder]
+      const newOrder = {
+        Date: "26.11.22",
+        dishes: [
+          {
+            Price: order.price,
+            Quantity: order.quantity,
+            name: order.name,
+            total: order.total,
+            img: order.img,
+          },
+        ],
+        restaurantNAme: order.resName,
+        status: "Delivered",
+        total: order.total,
+      };
+      const dish = {
+        Price: order.price,
+        Quantity: order.quantity,
+        name: order.name,
+        total: order.total,
+        img: order.img,
+      };
       const userRef = doc(dataBase, collectionName, id);
-      await updateDoc(userRef, {orders : array});
-      dispatch(createOrder(newOrder));
-      
+      if (array.dishes) {
+        array = { ...array, dishes: [...array.dishes, dish] };
+      } else {
+        array = newOrder;
+      }
+      await updateDoc(userRef, { currentOrder: array });
+      dispatch(createOrder(array));
     } catch (error) {
       console.log(error);
-      dispatch(createOrder(array))
+      dispatch(createOrder({}));
     }
-    
-  }
-  
-}
+  };
+};
 
 export const verifyCodeAsync = (code) => {
   return (dispatch) => {
@@ -261,6 +327,7 @@ export const updateProfileAsync = (user) => {
         orders: [],
         payments: [],
         recentsSearch: [],
+        currentOrder: [],
       };
       console.log(newUser);
       const userDocs = await addDoc(usersCollection, newUser);
