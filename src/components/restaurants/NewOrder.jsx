@@ -17,7 +17,7 @@ const NewOrder = () => {
       <div className='newOrder__info'>
         <section className='newOrder__info__top'>
             <h4>Deliver to</h4>
-            <small onClick={() => navigate('/adress')}><img src={location}alt="location" /> <span>882 Well St, New-York <img src={next} alt="next" /></span></small>
+            <small onClick={() => navigate(-1)}><img src={location}alt="location" /> <span>882 Well St, New-York <img src={next} alt="next" /></span></small>
             <h4>Payment</h4>
             <div className='newOrder__info__top__btns'>
                 <button>Cash</button>

@@ -32,9 +32,9 @@ const Navbar = () => {
                     </Link>
                     <ul>
                         <NavLink to='/' className='navlink'><IoHomeOutline />Home</NavLink>
-                        <NavLink to='search' className='navlink'><BsSearch /> Buscar</NavLink>
-                        <NavLink to='allOrder' className='navlink'> <RxCounterClockwiseClock /> Ordenes</NavLink>
-                        <NavLink to='profile' className='navlink'><HiOutlineUser /> Cuenta</NavLink>
+                        <NavLink to='search' className='navlink'><BsSearch /> Search</NavLink>
+                        <NavLink to='allOrder' className='navlink'> <RxCounterClockwiseClock /> Orders</NavLink>
+                        <NavLink to='profile' className='navlink'><HiOutlineUser /> Account</NavLink>
                     </ul>
 
                 </nav>

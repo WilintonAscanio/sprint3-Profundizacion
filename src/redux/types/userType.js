@@ -4,6 +4,9 @@ export const userTypes = {
     LOGIN_USER : 'LOGIN_USER',
     UPDATE_LOCATION : 'UPDATE_LOCATION',
     LOGOUT: 'LOGOUT',
+    ADD_SEARCH : 'ADD_SEARCH',
+    CREATE_ORDER : 'CREATE_ORDER',
+    ADD_CARD: 'ADD_CARD'
 
 }
 

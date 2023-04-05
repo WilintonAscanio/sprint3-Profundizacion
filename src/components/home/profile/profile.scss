@@ -237,12 +237,13 @@
     justify-content: space-between;
     align-items: center;
 
-    & section {
+    & form {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         width: 100%;
         margin-top: 10%;
+        height: 450px;
 
         & input {
             height: 35px;
@@ -264,16 +265,29 @@
 
             }
         }
+        & span {
+            font-size: 12px;
+            color: red;
+        }
+
+        & button {
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background-color: v.$main-color;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10%;
+
+
+            &:hover {
+                background-color: yellow;
+            }
+            
+        }
     }
 
-    & button {
-        height: 40px;
-        border: none;
-        border-radius: 8px;
-        background-color: v.$main-color;
-        cursor: pointer;
-        width: 350px;
-    }
+
 }
 
 @media(max-width:590px) {

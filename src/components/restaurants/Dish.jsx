@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import time from '../../assets/time.svg'
-import salad from '../../assets/salad.png'
-import { useNavigate, useParams } from 'react-router-dom'
+import back from '../../assets/back.svg'
+
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRestaurantsAsync } from '../../redux/actions/restaurantActions'
 
@@ -12,6 +13,7 @@ const Dish = () => {
     const { dish } = useParams()
     const { restaurant } = useParams()
     const { restaurants } = useSelector(state => state.restaurants)
+
 
 
     const dispatch = useDispatch()
@@ -75,6 +77,8 @@ const Dish = () => {
     const navigate = useNavigate()
     return (
         <article className='dish'>
+          <img src={back} alt="back" style={{width:'10px', margin:'10px'}}  onClick={() =>navigate(-1)}/>
+
 
             {currentDish ?
                 currentDish.map((e, index) => <>

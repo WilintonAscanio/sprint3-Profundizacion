@@ -16,6 +16,11 @@
         padding: 10px;
         border-radius: 8px;
 
+        & span {
+            font-size: 10px;
+            color: red;
+        }
+
         & img {
             width: 5%;
         }

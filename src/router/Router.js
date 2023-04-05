@@ -25,6 +25,7 @@ import { auth } from "../firebase/firebaseConfig";
 import { getUsers } from "../services/getUsers";
 import { loginUser } from "../redux/actions/userActions";
 import SignWithEmail from "../components/home/login/SignWithEmail";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Router = () => {
             dispatch(loginUser({}, { status: true, message: error.message }));
           });
       } else {
-        console.log("No logged");
+        console.log("No tas");
       }
     });
   }, []);
@@ -57,8 +58,8 @@ const Router = () => {
 
         
 
-        <Route path="/" element={<Home />} />
-        <Route path="/" element={<Navbar />}>
+        <Route path="/" element={<PrivateRouter><Home /></PrivateRouter> } />
+        <Route path="/" element={<PrivateRouter><Navbar /></PrivateRouter> }>
           <Route path="adress" element={<Adress />} />
           <Route path="allOrder" element={<AllOrder />} />
           <Route path="allOrder/:order" element={<Order />} />
@@ -68,7 +69,7 @@ const Router = () => {
           <Route path="/profile/payment/card" element={<CardUser />} />
           <Route path="search" element={<Search />} />
         </Route>
-        <Route path="/:restaurant" element={<Restaurants />} />
+        <Route path="/:restaurant" element={<PrivateRouter> <Restaurants /></PrivateRouter>} />
 
         <Route path="/:restaurant/:dish" element={<Dish />} />
         <Route path="newOrder" element={<NewOrder />} />

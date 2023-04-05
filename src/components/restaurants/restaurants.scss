@@ -3,7 +3,7 @@
 .restaurant {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 100%;
     height: 100vh;
     padding: 10px;
 
@@ -17,17 +17,22 @@
     &__dish {
         display: flex;
         gap: 20px;
+        width: 100%;
+
 
         &__left {
-            width: 160px;
-            height: 120px;
+            width: 50%;
+            height: 420px;
             display: flex;
             justify-content: start;
             position: relative;
+            padding: 20px;
 
             & img {
                 border-radius: 10px;
-                clip-path: polygon(100% 0, 100% 14%, 65% 100%, 0 100%, 0 0);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
 
 
             }
@@ -37,19 +42,30 @@
         & div {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 20px;
+            width: 40%;
+            padding: 20px;
+
+            & h4 {
+                font-size: 20px;
+            }
 
 
 
             & p {
-                font-size: 12px;
+                font-size: 18px;
             }
 
             & section {
                 display: flex;
                 align-items: center;
                 width: 100%;
+                font-size: 18px;
                 justify-content: space-between;
+
+                & figure img {
+                    height: 20px;
+                }
 
 
             }
@@ -67,7 +83,7 @@
         justify-content: space-around;
 
         & button {
-            width: 100px;
+            width: 200px;
             height: 40px;
             border: none;
             background-color: v.$complementary;
@@ -84,10 +100,10 @@
 
         display: flex;
         gap: 25px;
-        padding: 20px;
-        justify-content: space-between;
+        justify-content: space-around;
         flex-wrap: wrap;
         width: 100%;
+        margin-top: 20px;
 
 
         & figure {
@@ -96,18 +112,25 @@
             flex-direction: column;
             gap: 10px;
             width: 40%;
-            height: 150px;
+            height: 450px;
 
             & img {
                 border-radius: 8px;
-                height: 100px;
+                height: 80%;
                 object-fit: cover;
+                width: 100%;
             }
 
             & figcaption {
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
+                font-size: 20px;
+            }
+
+            &:hover {
+                scale: 1.1;
+                transition: .5s;
             }
         }
 
@@ -119,6 +142,10 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+
+    & img {
+        cursor: pointer;
+    }
 
     &__info {
         display: flex;
@@ -599,7 +626,8 @@
         }
     }
 }
-@media(max-width: 1000px){
+
+@media(max-width: 1000px) {
     .dish {
 
         &__btns {
@@ -608,9 +636,10 @@
         }
     }
 }
-@media(max-width: 730px){
+
+@media(max-width: 730px) {
     .dish {
-        &__info{
+        &__info {
             flex-direction: column;
             padding: 0;
 
@@ -619,14 +648,68 @@
                 padding: 0;
                 height: 40%;
             }
+
             & section {
                 width: 100%;
                 padding: 10px;
             }
         }
-        &__btns{
+
+        &__btns {
             position: relative;
         }
 
+    }
+}
+
+@media(max-width: 730px) {
+    .restaurant {
+        height: 100%;
+
+        &__dish {
+            height: 160px;
+            width: 100%;
+
+            &__left {
+                height: 100%;
+                padding: 0;
+                width: 40%;
+
+                & img {
+                    clip-path: polygon(100% 0, 100% 14%, 65% 100%, 0 100%, 0 0);
+                    width: 100%;
+
+
+                }
+            }
+            & div {
+                padding: 0;
+                width: 60%;
+                gap: 10px;
+
+                & h4, p {
+                    font-size: 12px;
+                }
+                & section {
+                    font-size: 14px;
+
+                    & figure img{
+                        height: 14px;
+                    }
+                }
+                
+            }
+        }
+        &__dishes {
+
+            & figure {
+                height: 180px;
+
+                & figcaption {
+            
+                    font-size: 15px;
+                }
+            }
+        }
     }
 }

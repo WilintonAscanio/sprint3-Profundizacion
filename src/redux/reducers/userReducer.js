@@ -40,6 +40,39 @@ export const userReducer = (state = initialState, action) => {
           location: action.payload,
         },
       };
+    case userTypes.ADD_SEARCH:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          recentsSearch: action.payload,
+        },
+      };
+    case userTypes.CREATE_ORDER:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          orders: action.payload,
+        },
+      };
+    case userTypes.ADD_CARD:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          payments: action.payload,
+        },
+      };
+
+      case userTypes.EDIT_USER:
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            
+          }
+        }
     case userTypes.LOGOUT:
       return state;
 

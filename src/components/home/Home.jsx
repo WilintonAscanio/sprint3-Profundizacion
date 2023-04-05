@@ -83,7 +83,7 @@ const Home = () => {
 
           >
             <img className="carousel-img" src={special} alt="image" />
-            <img src={deliver} alt="image" />
+            <img src={deliver} alt="image" style={{width: '100px'}} />
 
           </Carousel>
 

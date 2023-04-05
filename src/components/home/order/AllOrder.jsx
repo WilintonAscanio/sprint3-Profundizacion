@@ -22,7 +22,7 @@ const AllOrder = () => {
                     </figure>
                     <strong onClick={() => navigate(`${order.id}`)} className={order.status === 'Delivered' ? 'delivered' : 'cooking' }>{order.status} <img src={next} alt="next" /></strong>
                 </section>
-                ): <><h1>Aun no tienes ordenes</h1></>}
+                ): <><h1>You still don't have orders 😢</h1></>}
 
                 {/* <section>
                     <figure>

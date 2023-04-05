@@ -83,7 +83,7 @@ const Restaurants = () => {
       <section className='restaurant__btns'>
         <button onClick={() => filterType()}>All</button>
         <button onClick={() => filterType(1)}>Salates</button>
-        <button onClick={() => filterType(2)}>Pizza</button>
+        <button onClick={() => filterType(2)}>Fast Food</button>
       </section>
       <section className='restaurant__dishes'>
         {data.length ? data.map((e, index) =>

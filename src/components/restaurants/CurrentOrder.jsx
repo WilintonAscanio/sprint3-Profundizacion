@@ -9,7 +9,7 @@ import back from '../../assets/back.svg'
 const CurrentOrder = () => {
     return (
         <article className='currentOrder'>
-            <Link to='/dish' className='link'> <img src={back} alt="back"/><span>Current order</span></Link>
+            <Link to='/' className='link'> <img src={back} alt="back"/><span>Current order</span></Link>
             <div className='currentOrder__top'>
                 <section>
                     <figure className='currentOrder__top__status'>

@@ -10,14 +10,18 @@ import { color } from '@cloudinary/url-gen/qualifiers/background'
 
 //Hacer el use selector de loading y luego pasarselo en el button como disabled asi disabled={loading}
 const Adress = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const { user } = useSelector(state => state.users)
+
+  console.log(user);
 
 
   const dispatch = useDispatch()
   const onSubmit = (data) => {
     console.log(data);
     dispatch(updateLocationAsync(data.location))
+    reset()
+    
 
 
   }
@@ -31,7 +35,7 @@ const Adress = () => {
         </Link>
         <section onSubmit={handleSubmit(onSubmit)}>
           <img src={location} alt="location" />
-          <small>{user?.name ? user.location : <></> }</small>
+          <small style={{fontWeight:'bold', color: 'black'}}>{user?.name ? user.location : <></> }</small>
           <button>🗑</button>
         </section>
         <form onSubmit={handleSubmit(onSubmit)}>
