@@ -1,31 +1,60 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import './order.scss'
 import back from '../../../assets/back.svg'
+import { useSelector } from 'react-redux'
 
 
 const Order = () => {
+  const [data, setData] = useState([])
+  const [total, setTotal] = useState(0)
+  const { user } = useSelector(state => state.users)
+  const { order } = useParams()
+
+
+
+  useEffect(() => {
+
+    const orderFiltered = user?.orders.filter(ord => ord.restaurantNAme === order)
+    setData(orderFiltered[0])
+    setTotal(orderFiltered[0]?.total + 5.49 + 8)
+
+
+
+  }, [user])
+
+
   return (
+
     <article className='order'>
-      <Link className='adress__main__back' to={'/allOrder'}>
-        <img src={back} alt="back" />
-        <small>26.11.2022</small>
-      </Link>
-      <div className='order__quantity'>
-          <section>
-            <small>1x <span>Meat Pizza(medium)</span></small>
-            <small>$35.50</small>
-          </section>
-          <section>
-            <small>1x <span>Combined Pizza(small)</span></small>
-            <small>$30.99</small>
-          </section>
+      <div className='order__info'>
+
+      {data?.Date ? <>
+        <Link className='adress__main__back' to={'/allOrder'}>
+          <img src={back} alt="back" />
+          <small>{data.Date}</small>
+        </Link>
+        <div className='order__quantity'>
+          {data.dishes.map((dish, index) =>
+            <section key={index}>
+              <small>{dish.Quantity}x <span>{dish.name}</span></small>
+              <small>${dish.Price}</small>
+            </section>
+
+
+
+          )}
+
+
         </div>
         <div className='order__price'>
-          <strong>Production cost <span>$66.49</span></strong>
+          <strong>Production cost <span>$5.49</span></strong>
           <strong>Cost of delivery <span>$8.00</span></strong>
         </div>
-        <strong>Total <span>$74.49</span></strong>
+        <strong>Total <span>${total}</span></strong></> : <></>}
+      </div>
+
+
     </article>
   )
 }

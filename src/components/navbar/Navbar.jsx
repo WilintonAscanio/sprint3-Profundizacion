@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import './navbar.scss'
 import logo from '../../assets/logo.svg'
@@ -14,27 +14,54 @@ import { IoHomeOutline } from "react-icons/io5";
 
 
 const Navbar = () => {
+    const [width, setWidth] = useState(window.innerWidth)
 
+    const chandeWidth = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', chandeWidth)
 
-    return (
-        <>
-            <nav>
-                <Link to='/' className='navlink info'>
-                    <img src={logo} alt="logo" />
-                    <small>BigCenter</small>
-                </Link>
-                <ul>
-                    <NavLink to='/' className='navlink'><IoHomeOutline />Home</NavLink>
-                    <NavLink to='search' className='navlink'><BsSearch /> Buscar</NavLink>
-                    <NavLink to='allOrder' className='navlink'> <RxCounterClockwiseClock /> Ordenes</NavLink>
-                    <NavLink to='profile' className='navlink'><HiOutlineUser /> Cuenta</NavLink>
-                </ul>
+    if (width > 590) {
+        return (
 
-            </nav>
-            <Outlet />
-        </>
+            <>
+                <nav>
+                    <Link to='/' className='navlink info'>
+                        <img src={logo} alt="logo" />
+                        <small>BigCenter</small>
+                    </Link>
+                    <ul>
+                        <NavLink to='/' className='navlink'><IoHomeOutline />Home</NavLink>
+                        <NavLink to='search' className='navlink'><BsSearch /> Search</NavLink>
+                        <NavLink to='allOrder' className='navlink'> <RxCounterClockwiseClock /> Orders</NavLink>
+                        <NavLink to='profile' className='navlink'><HiOutlineUser /> Account</NavLink>
+                    </ul>
 
-    )
+                </nav>
+                <Outlet />
+            </>
+
+        )
+
+    } else {
+        return (
+        
+            <>
+                <nav>
+                    <ul>
+                        <NavLink to='/' className='navlink'><IoHomeOutline /></NavLink>
+                        <NavLink to='search' className='navlink'><BsSearch /> </NavLink>
+                        <NavLink to='allOrder' className='navlink'> <RxCounterClockwiseClock /></NavLink>
+                        <NavLink to='profile' className='navlink'><HiOutlineUser /> </NavLink>
+                    </ul>
+    
+                </nav>
+                <Outlet />
+            </>
+    
+        )
+    }
+
 }
 
 export default Navbar

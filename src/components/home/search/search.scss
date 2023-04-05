@@ -4,15 +4,22 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 400px;
+    width: 100%;
     padding: 10px;
+    align-items: center;
 
     &__input {
         display: flex;
         height: 40px;
+        width: 420px;
         background-color: v.$complementary;
         padding: 10px;
         border-radius: 8px;
+
+        & span {
+            font-size: 10px;
+            color: red;
+        }
 
         & img {
             width: 5%;
@@ -32,14 +39,27 @@
             border: none;
         }
     }
-    & div{
-        display: flex;
-        align-items: center;
-        height: 60px;
 
-        & figure{
+    & div {
+        display: flex;
+        flex-direction: column;
+        width: 410px;
+        margin-top: 10px;
+        gap: 10px;
+
+        & figure {
             display: flex;
             gap: 10px;
+            width: 100%;
+            height: 60px;
+            cursor: pointer;
+
+            & img {
+                object-fit: cover;
+                height: 100%;
+                width: 80px;
+                border-radius: 8px;
+            }
 
             & strong {
                 display: flex;
@@ -54,10 +74,11 @@
                 }
             }
         }
+
         & section {
-            margin-top: 60px;
             display: flex;
             flex-direction: column;
+            width: 100%;
             gap: 10px;
             font-size: 15px;
             color: v.$gray-color;
@@ -67,13 +88,21 @@
                 align-items: center;
                 gap: 10px;
 
-                & img{
+                & img {
                     width: 16px;
                 }
             }
 
-        
+
         }
 
+    }
+}
+@media (max-width : 590px){
+    .search {
+
+        &__input, div {
+            width: 100%;
+        }
     }
 }

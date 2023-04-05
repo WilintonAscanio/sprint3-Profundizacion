@@ -2,19 +2,22 @@
 
 
 .adress {
-    height: 100vh;
-    width: 450px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 10px;
     justify-content: space-between;
+    align-items: center;
+ 
 
     &__main {
         gap: 20px;
-        height: 100%;
-        width: 100%;
+        height: 500px;
+        width: 375px;
         display: flex;
         flex-direction: column;
+    
 
         &__back{
             text-decoration: none;
@@ -34,7 +37,7 @@
             
         }
 
-        & section {
+        & form, section {
             display: flex;
             align-items: center;
             height: 50px;
@@ -47,10 +50,10 @@
                 width: 30px;
             }
 
-            & label {
+            & label, small {
                 height: 90%;
                 display: flex;
-                font-size: 12px;
+                font-size: 14px;
                 color: gray;
                 flex-direction: column;
                 width: 85%;
@@ -60,6 +63,12 @@
                     outline: none;
                     height: 100%;
                 }
+            }
+            & small {
+                flex-direction: row;
+                align-items: center;
+               
+
             }
 
             & button {
@@ -83,7 +92,19 @@
         border-radius:8px;
         background-color: v.$main-color;
         font-size: 15px;
+        width: 375px;
 
         
+    }
+}
+@media (max-width : 590px){
+    .adress {
+        padding-bottom: 100px;
+
+        &__main {
+            width: 100%;
+            
+            
+        }
     }
 }
